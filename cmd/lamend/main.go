@@ -1,7 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"log/slog"
+	"os"
+
+	"github.com/nakaaaa/lamend"
+)
 
 func main() {
-	fmt.Println("hello lamend")
+	ctx := context.Background()
+
+	exit, err := lamend.Start(ctx)
+	if err != nil {
+		slog.Warn(err.Error())
+	}
+	os.Exit(exit)
 }
